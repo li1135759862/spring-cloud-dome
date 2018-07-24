@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="mysqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.16.9.4:3306/bim360?useUnicode=true" userId="root" password="root"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+       <javaModelGenerator targetPackage="com.ccbim.project.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis.mappings" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.ccbim.project.mapper" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <!--<table  tableName="t_p_refundotherdetail" domainObjectName="TPRefundotherdetail" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_p_complaint" domainObjectName="TPComplaint" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_project" domainObjectName="TYearProject" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_important" domainObjectName="TYearImportant" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_investmentrate" domainObjectName="TYearInvestmentrate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_investment" domainObjectName="TYearInvestment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_buyproject" domainObjectName="TYearBuyproject" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_buyprojectfile" domainObjectName="TYearBuyprojectfile" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_buyprojectfilecatalog" domainObjectName="TYearBuyprojectfilecatalog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table  tableName="t_year_bid" domainObjectName="TYearBid" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+
+
+        <table  tableName="d_task" domainObjectName="Task" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                enableSelectByExample="false" selectByExampleQueryId="false"/>
+
+
+
+    </context>
+</generatorConfiguration>

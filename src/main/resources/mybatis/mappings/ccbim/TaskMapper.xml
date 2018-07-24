@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbim.project.mapper.TaskMapper">
+  <resultMap id="BaseResultMap" type="com.ccbim.project.entity.Task">
+    <id column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
+    <result column="project_id" jdbcType="VARCHAR" property="projectId" />
+    <result column="member_id" jdbcType="CHAR" property="memberId" />
+    <result column="task_img_type" jdbcType="TINYINT" property="taskImgType" />
+    <result column="is_sms" jdbcType="TINYINT" property="isSms" />
+    <result column="begin_date" jdbcType="TIMESTAMP" property="beginDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="visible_type" jdbcType="TINYINT" property="visibleType" />
+    <result column="task_content" jdbcType="VARCHAR" property="taskContent" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="reply_cnt" jdbcType="INTEGER" property="replyCnt" />
+    <result column="file_cnt" jdbcType="INTEGER" property="fileCnt" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="task_type" jdbcType="TINYINT" property="taskType" />
+    <result column="star_level" jdbcType="TINYINT" property="starLevel" />
+    <result column="is_child_task" jdbcType="TINYINT" property="isChildTask" />
+    <result column="isVoice" jdbcType="TINYINT" property="isvoice" />
+    <result column="in_del_list" jdbcType="TINYINT" property="inDelList" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="source_type" jdbcType="TINYINT" property="sourceType" />
+    <result column="port_id" jdbcType="INTEGER" property="portId" />
+    <result column="port_photo" jdbcType="INTEGER" property="portPhoto" />
+    <result column="node_id" jdbcType="VARCHAR" property="nodeId" />
+    <result column="version_id" jdbcType="VARCHAR" property="versionId" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+    <result column="create_id" jdbcType="CHAR" property="createId" />
+    <result column="modify_id" jdbcType="CHAR" property="modifyId" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    task_id, task_title, project_id, member_id, task_img_type, is_sms, begin_date, end_date, 
+    visible_type, task_content, status, reply_cnt, file_cnt, parent_id, task_type, star_level, 
+    is_child_task, isVoice, in_del_list, delete_time, source_type, port_id, port_photo, 
+    node_id, version_id, gmt_create, gmt_modify, create_id, modify_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from d_task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from d_task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ccbim.project.entity.Task">
+    insert into d_task (task_id, task_title, project_id, 
+      member_id, task_img_type, is_sms, 
+      begin_date, end_date, visible_type, 
+      task_content, status, reply_cnt, 
+      file_cnt, parent_id, task_type, 
+      star_level, is_child_task, isVoice, 
+      in_del_list, delete_time, source_type, 
+      port_id, port_photo, node_id, 
+      version_id, gmt_create, gmt_modify, 
+      create_id, modify_id, is_delete
+      )
+    values (#{taskId,jdbcType=INTEGER}, #{taskTitle,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR}, 
+      #{memberId,jdbcType=CHAR}, #{taskImgType,jdbcType=TINYINT}, #{isSms,jdbcType=TINYINT}, 
+      #{beginDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{visibleType,jdbcType=TINYINT}, 
+      #{taskContent,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{replyCnt,jdbcType=INTEGER}, 
+      #{fileCnt,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{taskType,jdbcType=TINYINT}, 
+      #{starLevel,jdbcType=TINYINT}, #{isChildTask,jdbcType=TINYINT}, #{isvoice,jdbcType=TINYINT}, 
+      #{inDelList,jdbcType=TINYINT}, #{deleteTime,jdbcType=TIMESTAMP}, #{sourceType,jdbcType=TINYINT}, 
+      #{portId,jdbcType=INTEGER}, #{portPhoto,jdbcType=INTEGER}, #{nodeId,jdbcType=VARCHAR}, 
+      #{versionId,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=CHAR}, #{modifyId,jdbcType=CHAR}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbim.project.entity.Task">
+    insert into d_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="taskTitle != null">
+        task_title,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="taskImgType != null">
+        task_img_type,
+      </if>
+      <if test="isSms != null">
+        is_sms,
+      </if>
+      <if test="beginDate != null">
+        begin_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="visibleType != null">
+        visible_type,
+      </if>
+      <if test="taskContent != null">
+        task_content,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="replyCnt != null">
+        reply_cnt,
+      </if>
+      <if test="fileCnt != null">
+        file_cnt,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="starLevel != null">
+        star_level,
+      </if>
+      <if test="isChildTask != null">
+        is_child_task,
+      </if>
+      <if test="isvoice != null">
+        isVoice,
+      </if>
+      <if test="inDelList != null">
+        in_del_list,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="portId != null">
+        port_id,
+      </if>
+      <if test="portPhoto != null">
+        port_photo,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="versionId != null">
+        version_id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="modifyId != null">
+        modify_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskTitle != null">
+        #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=CHAR},
+      </if>
+      <if test="taskImgType != null">
+        #{taskImgType,jdbcType=TINYINT},
+      </if>
+      <if test="isSms != null">
+        #{isSms,jdbcType=TINYINT},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visibleType != null">
+        #{visibleType,jdbcType=TINYINT},
+      </if>
+      <if test="taskContent != null">
+        #{taskContent,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="replyCnt != null">
+        #{replyCnt,jdbcType=INTEGER},
+      </if>
+      <if test="fileCnt != null">
+        #{fileCnt,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=TINYINT},
+      </if>
+      <if test="starLevel != null">
+        #{starLevel,jdbcType=TINYINT},
+      </if>
+      <if test="isChildTask != null">
+        #{isChildTask,jdbcType=TINYINT},
+      </if>
+      <if test="isvoice != null">
+        #{isvoice,jdbcType=TINYINT},
+      </if>
+      <if test="inDelList != null">
+        #{inDelList,jdbcType=TINYINT},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="portId != null">
+        #{portId,jdbcType=INTEGER},
+      </if>
+      <if test="portPhoto != null">
+        #{portPhoto,jdbcType=INTEGER},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=CHAR},
+      </if>
+      <if test="modifyId != null">
+        #{modifyId,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccbim.project.entity.Task">
+    update d_task
+    <set>
+      <if test="taskTitle != null">
+        task_title = #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=CHAR},
+      </if>
+      <if test="taskImgType != null">
+        task_img_type = #{taskImgType,jdbcType=TINYINT},
+      </if>
+      <if test="isSms != null">
+        is_sms = #{isSms,jdbcType=TINYINT},
+      </if>
+      <if test="beginDate != null">
+        begin_date = #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visibleType != null">
+        visible_type = #{visibleType,jdbcType=TINYINT},
+      </if>
+      <if test="taskContent != null">
+        task_content = #{taskContent,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="replyCnt != null">
+        reply_cnt = #{replyCnt,jdbcType=INTEGER},
+      </if>
+      <if test="fileCnt != null">
+        file_cnt = #{fileCnt,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        task_type = #{taskType,jdbcType=TINYINT},
+      </if>
+      <if test="starLevel != null">
+        star_level = #{starLevel,jdbcType=TINYINT},
+      </if>
+      <if test="isChildTask != null">
+        is_child_task = #{isChildTask,jdbcType=TINYINT},
+      </if>
+      <if test="isvoice != null">
+        isVoice = #{isvoice,jdbcType=TINYINT},
+      </if>
+      <if test="inDelList != null">
+        in_del_list = #{inDelList,jdbcType=TINYINT},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=TINYINT},
+      </if>
+      <if test="portId != null">
+        port_id = #{portId,jdbcType=INTEGER},
+      </if>
+      <if test="portPhoto != null">
+        port_photo = #{portPhoto,jdbcType=INTEGER},
+      </if>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="versionId != null">
+        version_id = #{versionId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=CHAR},
+      </if>
+      <if test="modifyId != null">
+        modify_id = #{modifyId,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccbim.project.entity.Task">
+    update d_task
+    set task_title = #{taskTitle,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=CHAR},
+      task_img_type = #{taskImgType,jdbcType=TINYINT},
+      is_sms = #{isSms,jdbcType=TINYINT},
+      begin_date = #{beginDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      visible_type = #{visibleType,jdbcType=TINYINT},
+      task_content = #{taskContent,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      reply_cnt = #{replyCnt,jdbcType=INTEGER},
+      file_cnt = #{fileCnt,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      task_type = #{taskType,jdbcType=TINYINT},
+      star_level = #{starLevel,jdbcType=TINYINT},
+      is_child_task = #{isChildTask,jdbcType=TINYINT},
+      isVoice = #{isvoice,jdbcType=TINYINT},
+      in_del_list = #{inDelList,jdbcType=TINYINT},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      source_type = #{sourceType,jdbcType=TINYINT},
+      port_id = #{portId,jdbcType=INTEGER},
+      port_photo = #{portPhoto,jdbcType=INTEGER},
+      node_id = #{nodeId,jdbcType=VARCHAR},
+      version_id = #{versionId,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=CHAR},
+      modify_id = #{modifyId,jdbcType=CHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+</mapper>
